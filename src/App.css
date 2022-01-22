@@ -28,11 +28,33 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.EnigmaRole {
+  background-color: gold;
+  border: solid 2px black ;
+  margin: 25px ;
+
+  height: 180px;
+  line-height: 100px;
+  text-align: center;
+ 
+}  
+
+.EnigmaRoleSet {
+  background-image: url("./resources/zahnradgetriebe.jpg"); 
+  height:  300px ;
+}  
+
+.EnigmaKeyBoard {
+  background-image: url("./resources/laptops-keyboard.jpg"); 
+  height:  300px ;
+  width: 100%;
+}  
+
+ .container-fluid { 
+   margin-top: 100px;
+  height: 100%;
+  border: solid blue 3px ;
+  border-radius: 5px;
 }
+
