@@ -4,7 +4,7 @@ import {initWheel, getRandomArbitrary} from '../utils/utilities';
 import Badge from "react-bootstrap/Badge";
 
 
-export const EnigmaRole : FunctionComponent<RoleProps>= (props : RoleProps) => {
+export const EnigmaRole : FunctionComponent<RoleProps>= ({name} : RoleProps) => {
   // Declare a new state variable, which we'll call "count"
   const [count, setCount] = useState(0);
 
@@ -16,7 +16,7 @@ export const EnigmaRole : FunctionComponent<RoleProps>= (props : RoleProps) => {
 
     loadWheel() ;
 
-    async function fetchData() {
+    async function setUpSpinnWheel() {
         const timer = window.setInterval(() => {
                   setTime( time => { setCrypt(crypt =>String.fromCharCode(97+ time));  return getRandomArbitrary(0,27) });
                 
@@ -27,7 +27,7 @@ export const EnigmaRole : FunctionComponent<RoleProps>= (props : RoleProps) => {
     };     
 
     }
-    fetchData();
+    setUpSpinnWheel();
 
   }, []);
 
@@ -36,11 +36,14 @@ export const EnigmaRole : FunctionComponent<RoleProps>= (props : RoleProps) => {
   }
 
   return (
+      <>
+      <h4>{name}</h4>
     <div className="EnigmaRole">
         <Badge  bg="secondary" text="dark">
         {crypt}
         </Badge>
      
     </div>
+    </>
   );
 }

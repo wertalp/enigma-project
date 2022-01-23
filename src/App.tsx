@@ -4,6 +4,7 @@ import './App.css';
 import { Button, Row, Col,Container } from 'react-bootstrap';
 import {EnigmaRole} from './components/EnigmaRole' ;
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { EnigmaRoleSet } from './components/EnigmaRoleSet';
 
 function App() {
   return (
@@ -17,15 +18,8 @@ function App() {
      <Row>
         <Col lg="5">
         </Col>
-        <Col lg="1">
-        <EnigmaRole CryptedLetters="HAllo"> </EnigmaRole>
-        </Col>
-        <Col lg="1">
-        <EnigmaRole CryptedLetters="HAllo"> </EnigmaRole>
-        </Col>
-        <Col lg="1">
-        <EnigmaRole CryptedLetters="HAllo"> </EnigmaRole>
-        </Col>
+
+        <EnigmaRoleSet name="First RoleSet" anzRoles={3} ></EnigmaRoleSet>  
     </Row>
      </div>
 

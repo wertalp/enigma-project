@@ -9,7 +9,7 @@ type EnigmaRoleProps = {
     name: string;
     anzRoles : number ;
   }
-export const EnigmaRoleSet : React.FC<EnigmaRoleProps>  = ({name}) => {
+export const EnigmaRoleSet : React.FC<EnigmaRoleProps>  = ({name,anzRoles}) => {
     let roles: string[] = ["A","B","C","D","E"] ;
     let currentRoles : string[] =[] ;
 
@@ -19,14 +19,16 @@ export const EnigmaRoleSet : React.FC<EnigmaRoleProps>  = ({name}) => {
 
   },[])
 
-   const initRoleSet = () => {
-       roles.map( (item) => item ) 
+   const initRoleSet = (anz: number) => {
+       roles.map( (item) => item ) ;
 
    }
 
     return(
         <>
-
+        <div>
+            {roles.map( (item) => <EnigmaRole name={item}> </EnigmaRole> ) }
+        </div>
 
         </>
     )

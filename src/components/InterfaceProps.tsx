@@ -4,5 +4,5 @@ interface Crypt {
 
 
 export interface RoleProps {
-    CryptedLetters: string  ;
+    name : string 
 }
