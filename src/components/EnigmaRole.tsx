@@ -20,7 +20,8 @@ export const EnigmaRole : FunctionComponent<RoleProps>= ({name} : RoleProps) => 
 
     async function setUpSpinnWheel() {
         const timer = window.setInterval(() => {
-                  setTime( time => { setCrypt(crypt =>String.fromCharCode(97+ time));  return getRandomArbitrary(0,27) });
+                  setTime(   time   => { setCrypt(crypt => letter.get(String.fromCharCode(97+ time)) ? "h" :"c" ) 
+                    ;return getRandomArbitrary(0,27) });
                 
           }, 500);
 
@@ -35,6 +36,7 @@ export const EnigmaRole : FunctionComponent<RoleProps>= ({name} : RoleProps) => 
 
   const loadWheel = () =>{
          setLetter(initWheel()) ;
+         console.log()
   }
 
   return (
@@ -43,6 +45,7 @@ export const EnigmaRole : FunctionComponent<RoleProps>= ({name} : RoleProps) => 
      {name}
         <Badge  bg="secondary" text="dark">
         {crypt}
+        {letter}
         </Badge>
     </div>
 </>
