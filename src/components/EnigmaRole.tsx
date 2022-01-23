@@ -39,14 +39,12 @@ export const EnigmaRole : FunctionComponent<RoleProps>= ({name} : RoleProps) => 
 
   return (
     <>
-    <Col lg="1">
-         {name}
      <div className="EnigmaRole">
+     {name}
         <Badge  bg="secondary" text="dark">
         {crypt}
         </Badge>
     </div>
-    </Col>
 </>
   );
 }

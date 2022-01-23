@@ -28,7 +28,10 @@ export const EnigmaRoleSet : React.FC<EnigmaRoleProps>  = ({name,anzRoles}) => {
     return(
         <>
         <div>
-            <Row> {roles.map( (item) => <Col lg="1"> <EnigmaRole name={item}> </EnigmaRole>   </Col> ) }</Row>
+            <Row> 
+                <Col lg="4"> </Col>
+                {roles.map( (item) => <Col lg="1"> <EnigmaRole name={item}> </EnigmaRole>   </Col> ) }
+            </Row>
          
         </div>
 

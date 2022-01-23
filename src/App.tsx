@@ -15,12 +15,9 @@ function App() {
      <button type="button" className="btn btn-outline-secondary">Start</button>
      <button type="button" className="btn btn-outline-secondary">Encrypt</button>
      <div className="EnigmaRoleSet">
-     <Row>
-        <Col lg="5">
-        </Col>
 
         <EnigmaRoleSet name="First RoleSet" anzRoles={3} ></EnigmaRoleSet>  
-    </Row>
+
      </div>
 
   <Row>
