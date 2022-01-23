@@ -2,6 +2,8 @@ import React, { FunctionComponent, useState } from 'react';
 import {RoleProps} from './InterfaceProps' ;
 import {initWheel, getRandomArbitrary} from '../utils/utilities';
 import Badge from "react-bootstrap/Badge";
+import {Col} from "react-bootstrap";
+
 
 
 export const EnigmaRole : FunctionComponent<RoleProps>= ({name} : RoleProps) => {
@@ -36,14 +38,15 @@ export const EnigmaRole : FunctionComponent<RoleProps>= ({name} : RoleProps) => 
   }
 
   return (
-      <>
-      <h4>{name}</h4>
-    <div className="EnigmaRole">
+    <>
+    <Col lg="1">
+         {name}
+     <div className="EnigmaRole">
         <Badge  bg="secondary" text="dark">
         {crypt}
         </Badge>
-     
     </div>
-    </>
+    </Col>
+</>
   );
 }

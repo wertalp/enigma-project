@@ -3,6 +3,7 @@ import React, { FunctionComponent, useEffect, useState } from 'react';
 import {RoleProps} from './InterfaceProps' ;
 import {initWheel, getRandomArbitrary} from '../utils/utilities';
 import Badge from "react-bootstrap/Badge";
+import {Row,Col} from "react-bootstrap";
 import {EnigmaRole} from '../components/EnigmaRole' ;
 
 type EnigmaRoleProps = {
@@ -27,7 +28,8 @@ export const EnigmaRoleSet : React.FC<EnigmaRoleProps>  = ({name,anzRoles}) => {
     return(
         <>
         <div>
-            {roles.map( (item) => <EnigmaRole name={item}> </EnigmaRole> ) }
+            <Row> {roles.map( (item) => <Col lg="1"> <EnigmaRole name={item}> </EnigmaRole>   </Col> ) }</Row>
+         
         </div>
 
         </>
