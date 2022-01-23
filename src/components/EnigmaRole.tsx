@@ -37,13 +37,6 @@ export const EnigmaRole : FunctionComponent<RoleProps>= (props : RoleProps) => {
 
   return (
     <div className="EnigmaRole">
-        {crypt}
-        {crypt}
-        {crypt}
-    
-        <Badge  bg="secondary" text="dark">
-        {crypt}
-        </Badge>
         <Badge  bg="secondary" text="dark">
         {crypt}
         </Badge>
