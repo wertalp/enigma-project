@@ -30,20 +30,51 @@
 
 
 .EnigmaRole {
-  background-color: gold;
-  border: solid 2px black ;
-  margin: 25px ;
+  background-color: white;
+  border: solid 3px black ;
+  width: 48px;
 
   height: 180px;
-  line-height: 100px;
+
   text-align: center;
- 
-}  
+  animation: spin 2s ;
+}
+.EnigmaRole[wobble="1"] {
+  -webkit-animation:spin 4s linear infinite;
+  -moz-animation:spin 4s linear infinite;
+  animation:spin 4s linear infinite;
+}
+ .EnigmaRole:active  {
+  animation: spin 1s ;
+}
+.EnigmaRole:active:after  {
+  animation: spin 5s ;
+}
+
+@-moz-keyframes spin { 
+  100% { -moz-transform: rotate(360deg); } 
+}
+@-webkit-keyframes spin { 
+  100% { -webkit-transform: rotate(360deg); } 
+}
+@keyframes spin { 
+  100% { 
+      -webkit-transform: rotate(360deg); 
+      transform:rotate(360deg); 
+  } 
+}
 
 .EnigmaRoleSet {
   background-image: url("./resources/zahnradgetriebe.jpg"); 
   height:  300px ;
+  text-align: center;
+
 }  
+.InnerRoleSet{
+  border: 2px dashed blue;
+  width: 60%;
+  height: 40%;
+}
 
 .EnigmaKeyBoard {
   background-image: url("./resources/laptops-keyboard.jpg"); 
@@ -58,3 +89,9 @@
   border-radius: 5px;
 }
 
+
+textarea{
+  text-align: left;
+  border: 2px dashed #f69c55;
+  font-size: 6px;
+}

@@ -4,5 +4,7 @@ interface Crypt {
 
 
 export interface RoleProps {
-    name : string 
+    _name        : string ;
+    _input       : string ;
+    _encrypt   : (input : string| undefined) => string  ;
 }

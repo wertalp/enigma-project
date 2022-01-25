@@ -8,6 +8,7 @@ const wheelData  = new Map([
 
 
 export const initWheel = () => {
+    console.log("Herew we are in loading The Crypto Wheel"+ wheelData.get("L"));
   return wheelData ;
 
 } ;
