@@ -11,17 +11,20 @@ function App() {
 
    const [value, setValue] = useState<string>("A");
    const [crypt, setCrypt] = useState<string>("A");
+   const [encryptedText, setEncryptedText] = useState<string>("");
 
 
    useEffect(() => {
-    setCrypt( (crypt) => localStorage.getItem("Encrypted")||"") ;
+    setCrypt( (crypt) => localStorage.getItem("encrypted")||"") ;
    },[])
 
 
    const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
          setValue( (value) =>  e.target.value);
-         setInterval(() => 
-         setCrypt( (crypt) => localStorage.getItem("Encrypted")||"") ,500) ;
+         setInterval(() => {
+         setCrypt( (crypt) => localStorage.getItem("encrypted")||"");
+         setEncryptedText( (encryptedText) => localStorage.getItem("encryptedText")||"")} ,500) ;
+    
    }
 
 
@@ -35,11 +38,9 @@ return (
        <textarea className="InputBox" name="InputBox" cols={40} rows={2} value={value} onChange={handleChange}> Eingbabe Codierter Text</textarea>
        </Col>
        <Col>
-       <textarea className="InputBox" name="OutBox" cols={40} rows={2}>    Here we go Encryption          </textarea>
+       <textarea className="InputBox" name="OutBox" cols={40} rows={2} value={encryptedText}>        </textarea>
        </Col>
-       <Col></Col>
-       <Col></Col>
-       <Col></Col>
+
        <Col><h3> <Badge> {crypt}</Badge></h3></Col>
        <Col></Col>
      </Row>
