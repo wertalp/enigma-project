@@ -9,24 +9,47 @@ import {AppContext} from './utils/utilities';
 
 function App() {
 
-   const [value, setValue] = useState<string>("A");
-   const [crypt, setCrypt] = useState<string>("A");
-   const [encryptedText, setEncryptedText] = useState<string>("");
+    const [value, setValue] = useState<string>("A");
+    const [crypt, setCrypt] = useState<string>("A");
+    const [encryptedText, setEncryptedText] = useState<string[]>([]);
 
 
    useEffect(() => {
     setCrypt( (crypt) => localStorage.getItem("encrypted")||"") ;
-   },[])
+   },[value])
 
 
    const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-         setValue( (value) =>  e.target.value);
-         setInterval(() => {
-         setCrypt( (crypt) => localStorage.getItem("encrypted")||"");
-         setEncryptedText( (encryptedText) => localStorage.getItem("encryptedText")||"")} ,500) ;
-    
+   
+    switch(e.target.value.length) { 
+      case 0: { 
+          
+         break; 
+      } 
+      case 1: { 
+        setValue( (value) =>  e.target.value);
+        setCrypt( (crypt) => localStorage.getItem("encrypted")||"");
+        setEncryptedText( (encryptedText => [...encryptedText, crypt]));
+         break; 
+      } 
+      default: { 
+         //statements; 
+         break; 
+      } 
+   }; 
+   };
+
+   const startCrypt = () => {
+     let letters = Array.from(value) ;
+     letters.map( (letter,index) => setTimeout( () =>  { makeitwork(letter)},1000*index ));
    }
 
+   const makeitwork = (letter: string) =>{
+        console.log("Letter: "+letter);
+        setValue(value => letter);
+        setCrypt( (crypt) => localStorage.getItem("encrypted")||"");
+        setEncryptedText( (encryptedText => [...encryptedText, crypt]));
+   }
 
 return ( 
  <Container>
@@ -35,14 +58,15 @@ return (
      <AppContext.Provider value="dark">
      <Row>
        <Col>
-       <textarea className="InputBox" name="InputBox" cols={40} rows={2} value={value} onChange={handleChange}> Eingbabe Codierter Text</textarea>
+       <textarea className="InputBox" name="InputBox" cols={40} rows={2} value={value} onChange={event => setValue(event.target.value)}> Eingbabe Codierter Text</textarea>
+       <Button onClick={startCrypt}>CRYPT</Button>
        </Col>
        <Col>
-       <textarea className="InputBox" name="OutBox" cols={40} rows={2} value={encryptedText}>        </textarea>
+       <textarea className="InputBox" name="OutBox" cols={40} rows={2} value={encryptedText} >        </textarea>
        </Col>
 
        <Col><h3> <Badge> {crypt}</Badge></h3></Col>
-       <Col></Col>
+       <Col> { encryptedText.map( item => <> {item} </>) } </Col>
      </Row>
 
      <div className="EnigmaRoleSet">

@@ -7,12 +7,12 @@ import {Row,Col} from "react-bootstrap";
 import {EnigmaRole} from '../components/EnigmaRole' ;
 
 type EnigmaRoleProps = {
-     name : string;
+     name       : string ;
      anzRoles   : number ;
     _paraminput : string ;
   }
 export const EnigmaRoleSet : React.FC<EnigmaRoleProps>  = ({name,anzRoles,_paraminput}) => {
-    let roles: string[] = ["A","B","C"] ;
+    let roles        : string[] = ["A","B","C"] ;
     let currentRoles : string[] =[] ;
     const [input, setInput ] = useState<string>("X") ;
 

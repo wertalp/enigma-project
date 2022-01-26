@@ -17,7 +17,7 @@ export const EnigmaRole : FunctionComponent<RoleProps>= ({_name, _input , _encry
   let   cLetter : string = "";
   const [wobble, setWobble] = React.useState(0);
   const [cryptLetter, setCryptLetter]  = useState<string|undefined> ("") ;
-  const [encodedText, setEncodedText] = useState<string>("BRIEF: ")  ;
+  const [encodedText, setEncodedText] = useState<string>("")  ;
   
   React.useEffect ( 
       ()  => {
@@ -26,9 +26,8 @@ export const EnigmaRole : FunctionComponent<RoleProps>= ({_name, _input , _encry
      loadWheel() ;
      setNewLetter( newLetter => _input) ;
      setCryptLetter( cryptLetter => {localStorage.setItem("encrypted",getcryptedValue(newLetter)||"") ; 
-                                     cLetter = cLetter.concat(encodedText.concat(getcryptedValue(newLetter)||""));   
-                                     setEncodedText( encodedText => cLetter)  ;
-                                     localStorage.setItem( "encryptedText", encodedText.concat(getcryptedValue(newLetter)||"") ); return getcryptedValue(newLetter) }) ;  
+                     setEncodedText( encodedText => encodedText.concat(cLetter))  ;
+                     localStorage.setItem( "encryptedText", encodedText.concat(getcryptedValue(newLetter)||"") ); return getcryptedValue(newLetter) }) ;  
      _encrypt(cryptLetter)   
             window.setInterval(
             () =>  diceRoleKeys() ,800);  
@@ -51,7 +50,8 @@ export const EnigmaRole : FunctionComponent<RoleProps>= ({_name, _input , _encry
         try {
             if(letter.get(newLetter))
             {
-                return letter.get(newLetter) ;
+                cLetter = cLetter.concat(letter.get(newLetter)||"") ;
+                return letter.get(newLetter)                        ;
             }
         } catch (error) {
             console.log("Error") ;
