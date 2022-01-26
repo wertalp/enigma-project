@@ -5,19 +5,23 @@ import { Button, Row, Col,Container, Badge } from 'react-bootstrap';
 import {EnigmaRole} from './components/EnigmaRole' ;
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { EnigmaRoleSet } from './components/EnigmaRoleSet';
+import {AppContext} from './utils/utilities';
 
 function App() {
 
    const [value, setValue] = useState<string>("A");
    const [crypt, setCrypt] = useState<string>("A");
 
+
    useEffect(() => {
-  
+    setCrypt( (crypt) => localStorage.getItem("Encrypted")||"") ;
    },[])
 
 
    const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
          setValue( (value) =>  e.target.value);
+         setInterval(() => 
+         setCrypt( (crypt) => localStorage.getItem("Encrypted")||"") ,500) ;
    }
 
 
@@ -25,6 +29,7 @@ return (
  <Container>
    <div className="container-fluid">
      <h2> Enigma 2021</h2>
+     <AppContext.Provider value="dark">
      <Row>
        <Col>
        <textarea className="InputBox" name="InputBox" cols={40} rows={2} value={value} onChange={handleChange}> Eingbabe Codierter Text</textarea>
@@ -35,7 +40,7 @@ return (
        <Col></Col>
        <Col></Col>
        <Col></Col>
-       <Col><h3> <Badge> {value}</Badge></h3></Col>
+       <Col><h3> <Badge> {crypt}</Badge></h3></Col>
        <Col></Col>
      </Row>
 
@@ -45,6 +50,9 @@ return (
     <Row>
         <div className="EnigmaKeyBoard"> </div>
     </Row>
+
+     </AppContext.Provider>
+
    </div>
 
 </Container>

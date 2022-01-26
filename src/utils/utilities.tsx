@@ -1,3 +1,5 @@
+import React from "react";
+
 const wheelData  = new Map([
         ["A", 'Q'],   ["B", 'W'],["C", 'E'],["D", 'R'],["E", 'T'],
         ["F", 'Z'],["G", 'U'],["H", 'I'],["I", 'O'],["J", 'P'],["K", 'A'],
@@ -15,4 +17,6 @@ export const initWheel = () => {
 
 export function getRandomArbitrary(min: number, max: number) :number  {
     return Math.floor(Math.random() * (max - min) + min);
-  }
+} ;
+
+export  const AppContext = React.createContext('Error');
