@@ -3,6 +3,7 @@ import {RoleProps} from './InterfaceProps' ;
 import {initWheel, getRandomArbitrary} from '../utils/utilities';
 import Badge from "react-bootstrap/Badge";
 import {Col} from "react-bootstrap"; 
+import {messageService} from "../utils/services" ;
 
 
 
@@ -14,30 +15,37 @@ export const EnigmaRole : FunctionComponent<RoleProps>= ({_name, _input , _encry
   const [orig, setOrig]    = useState<String> ("") ;
   const [crypt, setCrypt]  = useState<String> ("") ;
   const [newLetter, setNewLetter]  = useState<string> ("") ;
-  let   cLetter : string = "";
   const [wobble, setWobble] = React.useState(0);
-  const [cryptLetter, setCryptLetter]  = useState<string|undefined> ("") ;
+  const [cryptLetter, setCryptLetter]  = useState<string> ("") ;
   const [encodedText, setEncodedText] = useState<string>("")  ;
+  let   cLetter   : string  = ""   ;
+  let   isStorage : Boolean = false;
+  
   
   React.useEffect ( 
       ()  => {
 
-    async function setUpSpinnWheel() {
-     loadWheel() ;
-     setNewLetter( newLetter => _input) ;
-     setCryptLetter( cryptLetter => {localStorage.setItem("encrypted",getcryptedValue(newLetter)||"") ; 
-                     setEncodedText( encodedText => encodedText.concat(cLetter))  ;
-                     localStorage.setItem( "encryptedText", encodedText.concat(getcryptedValue(newLetter)||"") ); return getcryptedValue(newLetter) }) ;  
-     _encrypt(cryptLetter)   
-            window.setInterval(
-            () =>  diceRoleKeys() ,800);  
+     function setUpSpinnWheel() {
+        loadWheel() ;
+        setNewLetter((newLetter) =>  {return _input}) ;
+        setCryptLetter(cryptLetter => getcryptedValue(newLetter));
+        messageService.sendMessage(cryptLetter) ;
+
+        if (isStorage) {
+            setCryptLetter( cryptLetter => {localStorage.setItem("encrypted",getcryptedValue(newLetter)||"");
+            localStorage.setItem( "encryptedText", encodedText.concat(getcryptedValue(newLetter)||"") ); return getcryptedValue(newLetter) }) ;  
+        }
+    
     }            
     setUpSpinnWheel();
-    }, [newLetter]);
+    }, [_input,newLetter,cryptLetter]);
 
     const loadWheel = async () => {
         setLetter(letter => initWheel());
         setLetter(initWheel()) ;
+        _encrypt(cryptLetter)   
+        window.setInterval(
+        () =>  diceRoleKeys(),800);  
         console.log( "Here we go with the Spinner Load: "+letter.get("A")) ;
     }
 
@@ -46,17 +54,17 @@ export const EnigmaRole : FunctionComponent<RoleProps>= ({_name, _input , _encry
         return letter.get(String.fromCharCode(97+ getRandomArbitrary(0,26)).toUpperCase()) || ""});
     }
 
-    const getcryptedValue= ( input : string | undefined): string | undefined  => {
+    const getcryptedValue= ( input : string): any   => {
         try {
-            if(letter.get(newLetter))
+            if(letter.get(_input))
             {
                 cLetter = cLetter.concat(letter.get(newLetter)||"") ;
-                return letter.get(newLetter)                        ;
+                return letter.get(_input) ;
             }
         } catch (error) {
             console.log("Error") ;
         }
-        return "" ;
+         return "" ;
     }
 
   return (

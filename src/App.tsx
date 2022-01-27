@@ -5,7 +5,8 @@ import { Button, Row, Col,Container, Badge } from 'react-bootstrap';
 import {EnigmaRole} from './components/EnigmaRole' ;
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { EnigmaRoleSet } from './components/EnigmaRoleSet';
-import {AppContext} from './utils/utilities';
+import {AppContext} from './utils/utilities' ;
+import {messageService} from "./utils/services" ;
 
 function App() {
 
@@ -15,33 +16,15 @@ function App() {
 
 
    useEffect(() => {
-    setCrypt( (crypt) => localStorage.getItem("encrypted")||"") ;
-   },[value])
+     let subscription = messageService.getMessage().subscribe( (message) =>  setCrypt( crypt => message));
+     setEncryptedText( (encryptedText => [...encryptedText, crypt])); 
 
+   },[value,crypt])
 
-   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-   
-    switch(e.target.value.length) { 
-      case 0: { 
-          
-         break; 
-      } 
-      case 1: { 
-        setValue( (value) =>  e.target.value);
-        setCrypt( (crypt) => localStorage.getItem("encrypted")||"");
-        setEncryptedText( (encryptedText => [...encryptedText, crypt]));
-         break; 
-      } 
-      default: { 
-         //statements; 
-         break; 
-      } 
-   }; 
-   };
 
    const startCrypt = () => {
      let letters = Array.from(value) ;
-     letters.map( (letter,index) => setTimeout( () =>  { makeitwork(letter)},1000*index ));
+     letters.map( (letter,index) => setTimeout( () =>  { makeitwork(letter)},3000*index ));
    }
 
    const makeitwork = (letter: string) =>{
