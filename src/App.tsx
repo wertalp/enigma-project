@@ -24,7 +24,7 @@ function App() {
 
    const startCrypt = () => {
      let letters = Array.from(value) ;
-     letters.map( (letter,index) => setTimeout( () =>  { makeitwork(letter)},3000*index ));
+     letters.map( (letter,index) => setTimeout( () =>  { makeitwork(letter)},1000*index ));
    }
 
    const makeitwork = (letter: string) =>{

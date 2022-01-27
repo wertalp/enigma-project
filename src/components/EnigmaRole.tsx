@@ -38,13 +38,12 @@ export const EnigmaRole : FunctionComponent<RoleProps>= ({_name, _input , _encry
     
     }            
     setUpSpinnWheel();
-    }, [_input,newLetter,cryptLetter]);
+    }, [_input,cryptLetter]);
 
     const loadWheel = async () => {
         setLetter(letter => initWheel());
-        setLetter(initWheel()) ;
-        _encrypt(cryptLetter)   
-        window.setInterval(
+        
+    window.setInterval(
         () =>  diceRoleKeys(),800);  
         console.log( "Here we go with the Spinner Load: "+letter.get("A")) ;
     }
@@ -54,11 +53,10 @@ export const EnigmaRole : FunctionComponent<RoleProps>= ({_name, _input , _encry
         return letter.get(String.fromCharCode(97+ getRandomArbitrary(0,26)).toUpperCase()) || ""});
     }
 
-    const getcryptedValue= ( input : string): any   => {
+    const getcryptedValue= ( input : string): any  => {
         try {
             if(letter.get(_input))
             {
-                cLetter = cLetter.concat(letter.get(newLetter)||"") ;
                 return letter.get(_input) ;
             }
         } catch (error) {
