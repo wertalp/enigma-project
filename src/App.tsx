@@ -10,8 +10,8 @@ import {messageService} from "./utils/services" ;
 
 function App() {
 
-    const [value, setValue] = useState<string>("A");
-    const [crypt, setCrypt] = useState<string>("A");
+    const [value, setValue] = useState<string>("");
+    const [crypt, setCrypt] = useState<string>("");
     const [encryptedText, setEncryptedText] = useState<string[]>([]);
 
 
