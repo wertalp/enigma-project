@@ -1,4 +1,4 @@
-import React, { ChangeEvent, ChangeEventHandler, useEffect, useState } from 'react';
+import React, { ChangeEvent, ChangeEventHandler, useEffect ,useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Button, Row, Col,Container, Badge } from 'react-bootstrap';
@@ -14,12 +14,15 @@ function App() {
     const [crypt, setCrypt] = useState<string>("");
     const [encryptedText, setEncryptedText] = useState<string[]>([]);
 
+    let subscription = messageService.getMessage()
+    .subscribe( (message) =>  {  console.log( "We are recaiving this: "+ message) ;  return   (message.length >0) ? setCrypt( crypt => message) : ""});
+
+
 
    useEffect(() => {
-     let subscription = messageService.getMessage().subscribe( (message) =>  setCrypt( crypt => message));
-     setEncryptedText( (encryptedText => [...encryptedText, crypt])); 
+   console.log("here we go")  
 
-   },[value,crypt])
+   },[value])
 
 
    const startCrypt = () => {
@@ -30,9 +33,8 @@ function App() {
    const makeitwork = (letter: string) =>{
         console.log("Letter: "+letter);
         setValue(value => letter);
-        setCrypt( (crypt) => localStorage.getItem("encrypted")||"");
         setEncryptedText( (encryptedText => [...encryptedText, crypt]));
-   }
+   }  
 
 return ( 
  <Container>

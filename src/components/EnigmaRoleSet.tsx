@@ -26,20 +26,13 @@ export const EnigmaRoleSet : React.FC<EnigmaRoleProps>  = ({name,anzRoles,_param
        roles.map( (item) => item ) ;
    }
 
-   const makecrypt = (input : any) : any => {
-       try {
-           
-       } catch (error) {
-           
-       }
-       return "" ;
-   }
+
     return(
         <>
         <div className="EnigmaRoleSet">
             <Row> 
                 <Col lg="5"> </Col>
-                {roles.map( (item) => <Col lg="1"> <EnigmaRole key={input.toString()} _name={item} _encrypt={makecrypt} _input={input}> </EnigmaRole>   </Col> ) }
+                {roles.map( (item) => <Col lg="1"> <EnigmaRole key={input.toString()} _name={item}  _input={input}> </EnigmaRole>   </Col> ) }
             </Row>
         </div>
 

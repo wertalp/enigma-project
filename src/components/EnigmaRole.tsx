@@ -7,7 +7,7 @@ import {messageService} from "../utils/services" ;
 
 
 
-export const EnigmaRole : FunctionComponent<RoleProps>= ({_name, _input , _encrypt } : RoleProps) => {
+export const EnigmaRole : FunctionComponent<RoleProps>= ({_name, _input  } : RoleProps) => {
   // Declare a new state variable, which we'll call "count"
   const [count, setCount]  = useState(0);
   const [time, setTime]    =  useState<number>(0);
@@ -29,6 +29,7 @@ export const EnigmaRole : FunctionComponent<RoleProps>= ({_name, _input , _encry
         loadWheel() ;
         setNewLetter((newLetter) =>  {return _input}) ;
         setCryptLetter(cryptLetter => getcryptedValue(newLetter));
+        
         messageService.sendMessage(cryptLetter) ;
 
         if (isStorage) {
@@ -38,7 +39,7 @@ export const EnigmaRole : FunctionComponent<RoleProps>= ({_name, _input , _encry
     
     }            
     setUpSpinnWheel();
-    }, [_input,cryptLetter]);
+    }, [newLetter]);
 
     const loadWheel = async () => {
         setLetter(letter => initWheel());
