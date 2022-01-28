@@ -4,7 +4,7 @@ const subject = new Subject<string>();
 
 
 export const messageService = {
-    sendMessage  : (message: string) => subject.next(message),
+    sendMessage  : (message: any) => subject.next(message),
     clearMessages: () => subject.next(""),
     getMessage   : () => subject.asObservable()
 };

@@ -14,7 +14,7 @@ type EnigmaRoleProps = {
 export const EnigmaRoleSet : React.FC<EnigmaRoleProps>  = ({name,anzRoles,_paraminput}) => {
     let roles        : string[] = ["A","B","C"] ;
     let currentRoles : string[] =[] ;
-    const [input, setInput ] = useState<string>("X") ;
+    const [input, setInput ] = useState<string>("") ;
 
   useEffect( () => {
        initRoleSet(3);
@@ -25,7 +25,6 @@ export const EnigmaRoleSet : React.FC<EnigmaRoleProps>  = ({name,anzRoles,_param
    const initRoleSet = (anz: number) => {
        roles.map( (item) => item ) ;
    }
-
 
     return(
         <>

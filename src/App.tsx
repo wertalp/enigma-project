@@ -11,6 +11,7 @@ import {messageService} from "./utils/services" ;
 function App() {
 
     const [value, setValue] = useState<string>("");
+    const [txtvalue, settxtValue] = useState<string>("");
     const [crypt, setCrypt] = useState<string>("");
     const [encryptedText, setEncryptedText] = useState<string[]>([]);
 
@@ -18,22 +19,21 @@ function App() {
     .subscribe( (message) =>  {  console.log( "We are recaiving this: "+ message) ;  return   (message.length >0) ? setCrypt( crypt => message) : ""});
 
 
-
    useEffect(() => {
-   console.log("here we go")  
+      console.log("here we go")  
+      setEncryptedText( (encryptedText => [...encryptedText, crypt]));
 
    },[value])
 
 
    const startCrypt = () => {
-     let letters = Array.from(value) ;
-     letters.map( (letter,index) => setTimeout( () =>  { makeitwork(letter)},1000*index ));
+   let   letters = Array.from(txtvalue) ;
+         letters.map( (letter,index) => setTimeout( () =>  { makeitwork(letter)},1000*index ));
    }
 
    const makeitwork = (letter: string) =>{
         console.log("Letter: "+letter);
-        setValue(value => letter);
-        setEncryptedText( (encryptedText => [...encryptedText, crypt]));
+        setValue(value => letter ) ;
    }  
 
 return ( 
@@ -43,7 +43,7 @@ return (
      <AppContext.Provider value="dark">
      <Row>
        <Col>
-       <textarea className="InputBox" name="InputBox" cols={40} rows={2} value={value} onChange={event => setValue(event.target.value)}> Eingbabe Codierter Text</textarea>
+       <textarea className="InputBox" name="InputBox" cols={40} rows={2} value={txtvalue} onChange={event => settxtValue(event.target.value)}> Eingbabe Codierter Text</textarea>
        <Button onClick={startCrypt}>CRYPT</Button>
        </Col>
        <Col>
