@@ -48,9 +48,9 @@ export const EnigmaRole : FunctionComponent<RoleProps>= ({_name, _input  } : Rol
 
     const diceRoleKeys = () => {
         setCrypt( crypt =>  
-                    { setOrig( orig => String.fromCharCode(97+ getRandomArbitrary(0,26)).toUpperCase());
-                     return wheelData
-                                    .get(String.fromCharCode(97+ getRandomArbitrary(0,26)).toUpperCase()) || ""});
+    {   setOrig(  orig  => String.fromCharCode(97+ getRandomArbitrary(0,26)).toUpperCase());
+        return wheelData
+              .get(String.fromCharCode(97+ getRandomArbitrary(0,26)).toUpperCase()) || ""});
     }
 
     const getcryptedValue= ( input : string): any  => {
@@ -70,7 +70,8 @@ export const EnigmaRole : FunctionComponent<RoleProps>= ({_name, _input  } : Rol
   return (
     <>
       <h4>{_name}</h4>
-    
+    <div className="EnigmaRoleOut">
+
      <div id="EnigmaRole"  className="EnigmaRole" onClick={() => setWobble(1)}>
      <Badge  bg="success" text="dark">
         {newLetter}
@@ -91,6 +92,8 @@ export const EnigmaRole : FunctionComponent<RoleProps>= ({_name, _input  } : Rol
         {cryptLetter}
         </Badge>
     </div>
+    </div>
+
 
 </>
   );

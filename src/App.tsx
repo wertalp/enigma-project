@@ -28,7 +28,7 @@ function App() {
    const startCrypt = () => {
       setEncryptedText(encryptedText => []);
    let   letters = Array.from(txtvalue) ;
-         letters.map( (letter,index) => setTimeout( () =>  { makeitwork(letter)},100* index ));
+         letters.map( (letter,index) => setTimeout( () =>  { makeitwork(letter)},40* index ));
    }
 
    const makeitwork = (letter: string) =>{

@@ -94,3 +94,11 @@ textarea{
   border: 2px dashed #f69c55;
   font-size: 6px;
 }
+
+.EnigmaRoleOut{
+  border: solid 5px black ;
+  width: 48px;
+
+  height: 180px;
+  text-align: center;
+}
