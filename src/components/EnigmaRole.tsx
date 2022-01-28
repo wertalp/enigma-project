@@ -47,8 +47,10 @@ export const EnigmaRole : FunctionComponent<RoleProps>= ({_name, _input  } : Rol
     }
 
     const diceRoleKeys = () => {
-        setCrypt( crypt =>  { setOrig( orig => String.fromCharCode(97+ getRandomArbitrary(0,26)).toUpperCase() || "" );
-        return wheelData.get(String.fromCharCode(97+ getRandomArbitrary(0,26)).toUpperCase()) || ""});
+        setCrypt( crypt =>  
+                    { setOrig( orig => String.fromCharCode(97+ getRandomArbitrary(0,26)).toUpperCase());
+                     return wheelData
+                                    .get(String.fromCharCode(97+ getRandomArbitrary(0,26)).toUpperCase()) || ""});
     }
 
     const getcryptedValue= ( input : string): any  => {

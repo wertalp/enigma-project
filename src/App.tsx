@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { EnigmaRoleSet } from './components/EnigmaRoleSet';
 import {AppContext} from './utils/utilities' ;
 import {messageService} from "./utils/services" ;
+import { Observable } from 'rxjs';
 
 function App() {
 
@@ -15,26 +16,33 @@ function App() {
     const [crypt, setCrypt] = useState<string>("");
     const [encryptedText, setEncryptedText] = useState<string[]>([]);
 
-    let subscription = messageService.getMessage()
-    .subscribe( (message) =>  {  console.log( "We are recaiving this: "+ message) ;  return   (message.length >0) ? setCrypt( crypt => message) : ""});
-
-
+  
    useEffect(() => {
       console.log("here we go")  
       setEncryptedText( (encryptedText => [...encryptedText, crypt]));
 
-   },[value])
+   },[crypt]) ;
+
 
 
    const startCrypt = () => {
+      setEncryptedText(encryptedText => []);
    let   letters = Array.from(txtvalue) ;
-         letters.map( (letter,index) => setTimeout( () =>  { makeitwork(letter)},1000*index ));
+         letters.map( (letter,index) => setTimeout( () =>  { makeitwork(letter)},100* index ));
    }
 
    const makeitwork = (letter: string) =>{
         console.log("Letter: "+letter);
         setValue(value => letter ) ;
    }  
+
+   const subscribeMessage = () : void => {
+        messageService.getMessage()
+                     .subscribe( (message) =>  
+                     {console.log( "We are recaiving this: "+ message) ; 
+       return (message.length >0) ? setCrypt( crypt => message) : ""});
+   }
+   subscribeMessage() ;
 
 return ( 
  <Container>
