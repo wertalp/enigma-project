@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@aws-amplify/ui-react": "^2.2.1",
+    "@aws-amplify/ui-react": "^1.2.5",
     "@react-rxjs/core": "^0.8.4",
     "@react-rxjs/utils": "^0.9.3",
     "@testing-library/jest-dom": "^5.16.1",
