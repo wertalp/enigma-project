@@ -12,17 +12,17 @@ export const EnigmaRole : FunctionComponent<RoleProps>= ({_name, _input  } : Rol
   const [count, setCount]  = useState(0);
   const [time, setTime]    =  useState<number>(0);
   const [wheelData,setWheelData] = useState<Map<string,string>>(new Map()) ;
-  const [orig, setOrig]    = useState<String> ("") ;
-  const [crypt, setCrypt]  = useState<String> ("") ;
+  const [orig, setOrig]     = useState<String> ("") ;
+  const [crypt, setCrypt]   = useState<String> ("") ;
   const [newLetter, setNewLetter]  = useState<string> ("") ;
   const [wobble, setWobble] = React.useState(0);
   const [cryptLetter, setCryptLetter]  = useState<string> ("") ;
-  const [encodedText, setEncodedText] = useState<string>("")  ;
+  const [encodedText, setEncodedText]  = useState<string>("")  ;
   const [init,setInit] = useState<boolean>(true) ;
   let   currentCryptLetter   : string  = ""   ;
-  let   isStorage : Boolean = false;
+  let   isStorage            : Boolean = false;
   
-  
+
   React.useEffect ( 
         ()  => {
         function doRender() {
@@ -33,14 +33,13 @@ export const EnigmaRole : FunctionComponent<RoleProps>= ({_name, _input  } : Rol
             setInit(init => false)
         }     
         doRender();
-        messageService.sendMessage(getcryptedValue(newLetter));
-
+    messageService.sendMessage(getcryptedValue(newLetter));
     }, [newLetter]);
   
   
     const loadWheel = () => {
         setWheelData(wheelData => initWheel());
-      
+
         window.setInterval(
             () =>  diceRoleKeys(),800);  
             console.log( "Here we go with the Spinner Load: "+wheelData.get("A")) ;

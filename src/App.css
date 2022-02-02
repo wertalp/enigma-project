@@ -35,7 +35,7 @@
   width: 48px;
 
   height: 180px;
-  animation:spin 4s linear infinite;
+  animation:spin 4s linear infinite ;
   text-align: center;
 }
 .EnigmaRole[wobble="1"] {
@@ -44,7 +44,7 @@
   animation:spin 4s linear infinite;
 }
  .EnigmaRole:hover  {
-  animation: spin 1s ;
+  transform:scale(1.5);
 }
 .EnigmaRole:active:after  {
   animation: spin 5s ;
@@ -101,4 +101,11 @@ textarea{
 
   height: 180px;
   text-align: center;
+}
+
+.anime { animation: turner 4s infinite linear }
+
+@keyframes turner{
+    from{  transform: rotateY(0deg)   }
+    to  {  transform: rotateY(360deg) }
 }

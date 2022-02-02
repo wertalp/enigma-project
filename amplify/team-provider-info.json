@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-enigmaproject-dev-161919-authRole",
+      "UnauthRoleArn": "arn:aws:iam::347987868616:role/amplify-enigmaproject-dev-161919-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::347987868616:role/amplify-enigmaproject-dev-161919-authRole",
+      "Region": "eu-central-1",
+      "DeploymentBucketName": "amplify-enigmaproject-dev-161919-deployment",
+      "UnauthRoleName": "amplify-enigmaproject-dev-161919-unauthRole",
+      "StackName": "amplify-enigmaproject-dev-161919",
+      "StackId": "arn:aws:cloudformation:eu-central-1:347987868616:stack/amplify-enigmaproject-dev-161919/55719420-8372-11ec-9845-06178564aad2",
+      "AmplifyAppId": "djla8aiazg7es"
+    },
+    "categories": {
+      "auth": {
+        "enigmaproject334e0010": {}
+      }
+    }
+  }
+}

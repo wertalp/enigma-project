@@ -15,11 +15,14 @@ function App() {
     const [txtvalue, settxtValue] = useState<string>("");
     const [crypt, setCrypt] = useState<string>("");
     const [encryptedText, setEncryptedText] = useState<string[]>([]);
+    const [isloading , setIsloading]    = useState<boolean>( true);
 
   
    useEffect(() => {
       console.log("here we go")  
       setEncryptedText( (encryptedText => [...encryptedText, crypt]));
+
+      window.setTimeout( () => { setIsloading(isloading => false)},1000) 
 
    },[crypt]) ;
 
@@ -32,23 +35,23 @@ function App() {
    }
 
    const makeitwork = (letter: string) =>{
-        console.log("Letter: "+letter);
-        setValue(value => letter ) ;
+        console.log("Letter: "+letter) ;
+        setValue(value => letter )     ;
    }  
 
    const subscribeMessage = () : void => {
         messageService.getMessage()
                      .subscribe( (message) =>  
                      {console.log( "We are recaiving this: "+ message) ; 
-       return (message.length >0) ? setCrypt( crypt => message) : ""});
+        return (message.length >0) ? setCrypt( crypt => message) : ""});
    }
    subscribeMessage() ;
 
 return ( 
+  {isloading} &&
  <Container>
    <div className="container-fluid">
      <h2> Enigma 2021</h2>
-     <AppContext.Provider value="dark">
      <Row>
        <Col>
        <textarea className="InputBox" name="InputBox" cols={40} rows={2} value={txtvalue} onChange={event => settxtValue(event.target.value)}> Eingbabe Codierter Text</textarea>
@@ -69,7 +72,6 @@ return (
         <div className="EnigmaKeyBoard"> </div>
     </Row>
 
-     </AppContext.Provider>
 
    </div>
 
