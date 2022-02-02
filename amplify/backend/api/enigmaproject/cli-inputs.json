@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "enigmaproject",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/Users/wertalp/Code/V1/enigma-project/amplify/backend/api/enigmaproject/schema.graphql",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 7
+    }
+  }
+}

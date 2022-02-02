@@ -8,6 +8,7 @@ import { EnigmaRoleSet } from './components/EnigmaRoleSet';
 import {AppContext} from './utils/utilities' ;
 import {messageService} from "./utils/services" ;
 import { Observable } from 'rxjs';
+import { withAuthenticator , AmplifySignOut } from '@aws-amplify/ui-react' ;
 
 function App() {
 
@@ -74,9 +75,10 @@ return (
 
 
    </div>
-
+   <AmplifySignOut/>
 </Container>
+
   );
 }
 
-export default App;
+export default withAuthenticator(App);
