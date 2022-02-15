@@ -9,6 +9,7 @@ import {AppContext} from './utils/utilities' ;
 import {messageService} from "./utils/services" ;
 import { Observable } from 'rxjs';
 import { withAuthenticator , AmplifySignOut } from '@aws-amplify/ui-react' ;
+import {Touchpad} from './components/Touchpad' ;
 
 function App() {
 
@@ -53,6 +54,7 @@ return (
  <Container>
    <div className="container-fluid">
      <h2> Enigma 2021</h2>
+     <Touchpad></Touchpad>
      <Row>
        <Col>
        <textarea className="InputBox" name="InputBox" cols={40} rows={2} value={txtvalue} onChange={event => settxtValue(event.target.value)}> Eingbabe Codierter Text</textarea>
@@ -81,4 +83,5 @@ return (
   );
 }
 
-export default withAuthenticator(App);
+//export default withAuthenticator(App);
+export default App ;

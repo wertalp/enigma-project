@@ -7,7 +7,7 @@ import {messageService} from "../utils/services" ;
 
 
 
-export const EnigmaRole : FunctionComponent<RoleProps>= ({_name, _input  } : RoleProps) => {
+export const EnigmaRole : FunctionComponent<RoleProps>= ({_name, _input, _chiffre  } : RoleProps) => {
   // Declare a new state variable, which we'll call "count"
   const [count, setCount]  = useState(0);
   const [time, setTime]    =  useState<number>(0);
@@ -19,6 +19,7 @@ export const EnigmaRole : FunctionComponent<RoleProps>= ({_name, _input  } : Rol
   const [cryptLetter, setCryptLetter]  = useState<string> ("") ;
   const [encodedText, setEncodedText]  = useState<string>("")  ;
   const [init,setInit] = useState<boolean>(true) ;
+  const [chiffre,setChiffre] = useState<string>("BB") ;
   let   currentCryptLetter   : string  = ""   ;
   let   isStorage            : Boolean = false;
   
@@ -27,6 +28,7 @@ export const EnigmaRole : FunctionComponent<RoleProps>= ({_name, _input  } : Rol
         ()  => {
         function doRender() {
             setNewLetter((newLetter) =>  {return _input}) ;
+            setChiffre(chiffre =>  _chiffre) ;
         }   
         if (init){
             loadWheel();
@@ -73,7 +75,7 @@ export const EnigmaRole : FunctionComponent<RoleProps>= ({_name, _input  } : Rol
 
      <div id="EnigmaRole"  className="EnigmaRole" onClick={() => setWobble(1)}>
      <Badge  bg="success" text="dark">
-        {newLetter}
+        {newLetter} 
         </Badge>
         <Badge  bg="warning" text="dark">
         {orig}
@@ -90,6 +92,10 @@ export const EnigmaRole : FunctionComponent<RoleProps>= ({_name, _input  } : Rol
         <Badge  bg="success" text="dark">
         {cryptLetter}
         </Badge>
+        <Badge  bg="success" text="dark">
+        {chiffre}
+        </Badge>
+
     </div>
     </div>
 
