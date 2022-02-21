@@ -19,15 +19,11 @@ export const Touchpad : FunctionComponent<any>= (any) => {
         setMouseX(newX)
         setMouseY(newY)
     })
-
    } )
-
-
-
 
     return (
         <>
-        <h4>HERE WE ARE</h4>
+        <h4>E Coordinates</h4>
         <button > {mouseX} </button>
         <button> {mouseY}</button>
         
